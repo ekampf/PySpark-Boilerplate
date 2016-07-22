@@ -1,0 +1,7 @@
+[nosetests]
+stop=1
+processes=-1
+logging-level=CRITICAL
+logging-format="\n%(name)s: %(levelname)s: %(message)s"
+process-timeout=100
+with-xunitmp=1
