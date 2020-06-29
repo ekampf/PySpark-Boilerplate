@@ -69,3 +69,6 @@ target/
 # PyCharm and VirtualEnv
 .idea
 .venv
+
+# VisualStudioCode
+.vscode
