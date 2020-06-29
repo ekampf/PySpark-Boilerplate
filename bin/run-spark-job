@@ -10,4 +10,6 @@ fi
 
 export PROJECT_ROOT="$(cd "`dirname "$0"`"/..; pwd)"
 
-cd ${PROJECT_ROOT}/dist && spark-submit --py-files jobs.zip,libs.zip main.py --job ${JOB_NAME}
+cd ${PROJECT_ROOT}/dist && spark-submit \
+    --py-files jobs.zip,libs.zip \
+    main.py --job ${JOB_NAME} --job-args k1=v1 k2=v2

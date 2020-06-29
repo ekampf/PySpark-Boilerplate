@@ -48,6 +48,3 @@ build: clean
 	cp ./src/main.py ./dist
 	cd ./src && zip -x main.py -x \*libs\* -r ../dist/jobs.zip .
 	cd ./src/libs && zip -r ../../dist/libs.zip .
-
-run:
-	cd ./dist && spark-submit --py-files jobs.zip,libs.zip main.py --job wordcount

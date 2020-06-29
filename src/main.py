@@ -8,15 +8,15 @@ import os
 import sys
 
 
-# if os.path.exists('libs.zip'):
-#     sys.path.insert(0, 'libs.zip')
-# else:
-#     sys.path.insert(0, './libs')
+if os.path.exists('libs.zip'):
+    sys.path.insert(0, 'libs.zip')
+else:
+    sys.path.insert(0, './libs')
 
-# if os.path.exists('jobs.zip'):
-#     sys.path.insert(0, 'jobs.zip')
-# else:
-#     sys.path.insert(0, './jobs')
+if os.path.exists('jobs.zip'):
+    sys.path.insert(0, 'jobs.zip')
+else:
+    sys.path.insert(0, './jobs')
 
 # pylint:disable=E0401
 try:
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     job_module = importlib.import_module('jobs.%s' % args.job_name)
 
     start = time.time()
-    job_module.analyze(sc, **job_args)
+    job_module.run(sc, **job_args)
     end = time.time()
 
     print("\nExecution of job %s took %s seconds" % (args.job_name, end-start))

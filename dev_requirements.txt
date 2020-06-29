@@ -1,12 +1,11 @@
 pysparkling
 findspark
 psutil
-
 pre-commit
-
 mock
 freezegun
 pylint
+jupyter
 nose==1.3.6
 nose-cov==1.6
 nose-xunitmp==0.3.2

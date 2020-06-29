@@ -18,7 +18,7 @@ def to_pairs(context, word):
     return word, 1
 
 
-def analyze(sc):
+def run(sc, **kwargs):
     print("Running wordcount")
     context = WordCountJobContext(sc)
 
@@ -46,5 +46,8 @@ Quisque arcu nunc, feugiat ut mi quis, blandit varius elit. Quisque ullamcorper 
     result = ordered.collect()
     print(result)
     context.print_accumulators()
+
+    print('kwargs:')
+    print(kwargs)
 
     return result

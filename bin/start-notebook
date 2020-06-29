@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export PROJECT_ROOT="$(cd "`dirname "$0"`"/..; pwd)"
+
+source ${PROJECT_ROOT}/.venv/bin/activate
+
+export PYSPARK_PYTHON=$(which python)
+export PYSPARK_DRIVER_PYTHON=jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+export PYTHONPATH=${PROJECT_ROOT}/dist/jobs.zip:${PROJECT_ROOT}/dist/libs.zip:$PYTHONPATH
+
+$SPARK_HOME/bin/pyspark
