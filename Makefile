@@ -32,19 +32,22 @@ clean-test:
 	rm -fr htmlcov/
 
 deps: .venv
-	. .venv/bin/activate && pip install -U -r requirements.txt -t ./src/libs
+	source .venv/bin/activate && pip install -U -r requirements.txt -t ./src/libs
 
 dev_deps: .venv
-	. .venv/bin/activate && pip install -U -r dev_requirements.txt
+	source .venv/bin/activate && pip install -U -r dev_requirements.txt
 
 lint:
-	. .venv/bin/activate && pylint -r n src/main.py src/shared src/jobs tests
+	source .venv/bin/activate && pylint -r n src/main.py src/shared src/jobs tests
 
 test:
-	. .venv/bin/activate && nosetests ./tests/* --config=.noserc
+	source .venv/bin/activate && nosetests ./tests/* --config=.noserc
 
 build: clean
 	mkdir ./dist
 	cp ./src/main.py ./dist
 	cd ./src && zip -x main.py -x \*libs\* -r ../dist/jobs.zip .
 	cd ./src/libs && zip -r ../../dist/libs.zip .
+
+run:
+	cd ./dist && spark-submit --py-files jobs.zip,libs.zip main.py --job wordcount

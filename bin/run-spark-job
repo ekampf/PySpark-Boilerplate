@@ -1,0 +1,13 @@
+#!/bin/bash
+
+JOB_NAME=$1
+if [ -z ${1+x} ]; then
+	echo "please specify job name as 1st parameter";
+    exit;
+else
+	echo "start run job: '${JOB_NAME}'";
+fi
+
+export PROJECT_ROOT="$(cd "`dirname "$0"`"/..; pwd)"
+
+cd ${PROJECT_ROOT}/dist && spark-submit --py-files jobs.zip,libs.zip main.py --job ${JOB_NAME}
