@@ -16,6 +16,9 @@ else:
     sys.path.insert(0, './jobs')
 
 # pylint:disable=E0401
+\escfas
+f'
+a'file
 try:
     import pyspark
 except:
