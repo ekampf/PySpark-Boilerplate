@@ -19,9 +19,9 @@ else:
 try:
     import pyspark
 except:
-    import findspark
-    findspark.init()
-    import pyspark
+        import findspark
+        findspark.init()
+        import pyspark
 
 __author__ = 'ekampf'
 
