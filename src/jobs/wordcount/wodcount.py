@@ -42,13 +42,13 @@ if __name__ == '__main__':
     if args.job_args:
         job_args_tuples = [arg_str.split('=') for arg_str in args.job_args]
         print 'job_args_tuples: %s' % job_args_tuples
-        job_args = {a[0]: a[1] for a in job_args_tuples}
+        job_args = {a[0] : a[1] for a  in job_args_tuples}
+        
 
     print '\nRunning job %s...\nenvironment is %s\n' % (args.job_name, environment)
 
     os.environ.update(environment)
     sc = pyspark.SparkContext(appName=args.job_name, environment=environment)
-    job_module = importlib.import_module('jobs.%s' % args.job_name)
 
     start = time.time()
     job_module.analyze(sc, **job_args)
